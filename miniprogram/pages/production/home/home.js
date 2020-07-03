@@ -2,6 +2,13 @@
 const app = getApp()
 Component({
   /**
+   * 组件的一些选项
+   */
+  options: {
+    addGlobalClass: true,
+    multipleSlots: true
+  },
+  /**
    * 组件的属性列表
    */
   properties: {
@@ -17,7 +24,7 @@ Component({
     Custom: app.globalData.Custom,
     TabCur: 0,
     MainCur: 0,
-    VerticalNavTop: 0,
+    ProductionNavTop: 0,
     list: [],
     load: true
   },
@@ -30,10 +37,10 @@ Component({
       this.setData({
         TabCur: e.currentTarget.dataset.id,
         MainCur: e.currentTarget.dataset.id,
-        VerticalNavTop: (e.currentTarget.dataset.id - 1) * 50
+        ProductionNavTop: (e.currentTarget.dataset.id - 1) * 50
       })
     },
-    VerticalMain(e) {
+    ProductionMain(e) {
       let that = this;
       let list = this.data.list;
       let tabHeight = 0;
@@ -57,7 +64,7 @@ Component({
       for (let i = 0; i < list.length; i++) {
         if (scrollTop > list[i].top && scrollTop < list[i].bottom) {
           that.setData({
-            VerticalNavTop: (list[i].id - 1) * 50,
+            ProductionNavTop: (list[i].id - 1) * 50,
             TabCur: list[i].id
           })
           return false
@@ -72,11 +79,23 @@ Component({
       mask: true
     });
     let list = [{}];
-    for (let i = 0; i < 26; i++) {
-      list[i] = {};
-      list[i].name = String.fromCharCode(65 + i);
-      list[i].id = i;
-    }
+    list = [
+      {
+        id: 0,
+        name: "新能源场站监控产品包",
+        childList: []
+      },
+      {
+        id: 1,
+        name: "新能源场站监控产品包",
+        childList: []
+      },
+      {
+        id: 2,
+        name: "新能源场站监控产品包",
+        childList: []
+      }
+    ];
     this.setData({
       list: list,
       listCur: list[0]

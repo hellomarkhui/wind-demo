@@ -1,10 +1,10 @@
 /* pages/production/home/home.wxss */
-.VerticalNav.nav {
+.ProductionNav.nav {
   width: 200rpx;
   white-space: initial;
 }
 
-.VerticalNav.nav .cu-item {
+.ProductionNav.nav .cu-item {
   width: 100%;
   text-align: center;
   background-color: #fff;
@@ -14,10 +14,10 @@
   position: relative;
 }
 
-.VerticalNav.nav .cu-item.cur {
+.ProductionNav.nav .cu-item.cur {
   background-color: #f1f1f1;
 }
-.VerticalNav.nav .cu-item.cur::after {
+.ProductionNav.nav .cu-item.cur::after {
   content: "";
   width: 8rpx;
   height: 30rpx;
@@ -29,9 +29,13 @@
   bottom: 0;
   margin: auto;
 }
-.VerticalBox{
+.ProductionBox{
   display: flex;
 }
 .VerticalMain{
   background-color: #f1f1f1;
+}
+
+.nav .cu-item {
+  line-height: 50rpx;
 }

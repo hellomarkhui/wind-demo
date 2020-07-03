@@ -10,7 +10,6 @@
         <view>联系我们</view>
       </view>
 </view>
-<button style="background: green; width: 100%;" bindtap="navTo">点我跳转</button>
 <view class="content">
   <production wx:if="{{PageCur=='production'}}"></production>
   <feedback wx:if="{{PageCur=='feedback'}}"></feedback>
