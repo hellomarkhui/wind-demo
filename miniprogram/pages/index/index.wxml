@@ -1,0 +1,38 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{false}}">
+  <view slot="content">明阳小程序demo</view>
+</cu-custom>
+<view class="info-title">地蕴天成，能动无限</view>
+<view class="flex info-main">
+      <view class="flex-sub bg-grey padding-sm info-logo">公司logo</view>
+      <view class="flex-treble bg-blue padding-sm info-content">
+        <view>简介信息</view>
+        <view>公司动态</view>
+        <view>联系我们</view>
+      </view>
+</view>
+<button style="background: green; width: 100%;" bindtap="navTo">点我跳转</button>
+<view class="content">
+  <production wx:if="{{PageCur=='production'}}"></production>
+  <feedback wx:if="{{PageCur=='feedback'}}"></feedback>
+  <about wx:if="{{PageCur=='about'}}"></about>
+</view>
+<view class="cu-bar tabbar bg-white shadow foot">
+  <view class="action" bindtap="NavChange" data-cur="production">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/production{{PageCur=='production'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='production'?'text-green':'text-gray'}}">产品</view>
+  </view>
+  <view class="action" bindtap="NavChange" data-cur="feedback">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/feedback{{PageCur=='feedback'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='feedback'?'text-green':'text-gray'}}">反馈</view>
+  </view>
+  <view class="action" bindtap="NavChange" data-cur="about">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/about{{PageCur=='about'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='about'?'text-green':'text-gray'}}">关于</view>
+  </view>
+</view>

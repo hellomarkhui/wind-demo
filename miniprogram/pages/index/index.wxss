@@ -1,0 +1,19 @@
+/* pages/index/index.wxss */
+.info-title {
+  height: 80rpx;
+  background-color: green;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 40rpx;
+  color: white;
+}
+.info-main {
+  font-size: 32rpx;
+}
+.info-content {
+  height: 200rpx;
+}
+.content {
+  height: calc(100vh - 250rpx);
+  overflow-y: hidden;
+}

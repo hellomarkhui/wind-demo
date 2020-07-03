@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "production": "/pages/production/home/home",
+    "feedback": "/pages/feedback/home/home",
+    "about": "/pages/about/home/home"
+  }
+}
