@@ -1,28 +1,114 @@
-<view class="ProductionBox">
-  <scroll-view class="ProductionNav nav" scroll-y scroll-with-animation scroll-top="{{ProductionNavTop}}" style="height:calc(100vh - 500rpx)">
-    <view class="cu-item {{index==TabCur?'text-green cur':''}}" wx:for="{{list}}" wx:key bindtap='tabSelect' data-id="{{index}}">
-      <view>{{item.name}}</view>
+<!--pages/production/home/home.wxml-->
+<company-info></company-info>
+<view class="main">
+  <scroll-view class="sidebar" scroll-y="true">
+    <view bindtap="tabSelect" wx:for="{{packages}}" class="tab-item {{curPackageId === item.id?'tab-cur':''}}" data-id="{{item.id}}" wx:key="id">
+      {{item.name}}
     </view>
   </scroll-view>
-  <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(100vh - 500rpx)" scroll-into-view="main-{{MainCur}}" bindscroll="ProductionMain">
-    <view class="padding-top padding-lr" wx:for="{{list}}" wx:key id="main-{{index}}">
-      <view class='cu-bar solid-bottom bg-white'>
-        <view class='action'>
-          <text class='cuIcon-title text-green'></text> {{item.name}} </view>
-      </view>
-      <view class="cu-list menu-avatar">
-        <view class="cu-item">
-          <view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
-          <view class="content">
-            <view class="text-grey">凯尔</view>
-            <view class="text-gray text-sm flex">
-              <text class="text-cut">
-                  <text class="cuIcon-infofill text-red  margin-right-xs"></text> 我已天理为凭，踏入这片荒芜，不再受凡人的枷锁遏制。我已天理为凭，踏入这片荒芜，不再受凡人的枷锁遏制。
-              </text>
-            </view>
+  <scroll-view  class="content {{curContent==='proList'?'':'hide'}}" scroll-y="true">
+    <view class="content-item {{curPackageId===item.proPackageId?'':'hide'}}" 
+    id="content-{{index}}" wx:for="{{list}}" wx:key="id" >
+      <view class="item-row">
+        <view class="row-img">
+          图片
+        </view>
+        <view class="row-txt">
+          <view class="cu-bar"> {{ item.name }}</view>
+          <view class="text-gray text-sm flex txt-describe">
+            {{ item.describe }}
+          </view>
+          <view class="cu-bar">
+            <button class="cu-btn" data-proid="{{item.id}}" bindtap="lookDetail">详情</button>
           </view>
         </view>
       </view>
     </view>
   </scroll-view>
+  <scroll-view  class="content {{curContent==='detail'?'':'hide'}}" scroll-y="true" >
+    <view class="detail  {{curProId===item.id?'':'hide'}}" wx:for="{{list}}" wx:key="id">
+      <view class="box">
+        <view class="cu-bar bg-white">
+          <view class="action" bindtap="detailBack">
+            <text class="cuIcon-back text-gray"></text> 返回
+          </view>
+        </view>
+        <view class="cu-bar bg-white margin-top solid-bottom">
+          <view class="action">
+            <text class="cuIcon-title text-orange"></text>产品名称：
+          </view>
+        </view>
+        <view class="cu-card article">
+          <view class="cu-item shadow">
+            <view class="title">
+              <view class="text-cut text-center">{{item.name}}</view>
+            </view>
+          </view>
+        </view>
+        <view class="cu-bar bg-white margin-top solid-bottom">
+          <view class="action">
+            <text class="cuIcon-title text-orange"></text>产品概述：
+          </view>
+        </view>
+        <view class="cu-card article">
+          <view class="cu-item shadow">
+            <view class="content">
+              <view class="desc">
+                <view class="text-content">{{item.describe}}
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="cu-bar bg-white margin-top solid-bottom">
+          <view class="action">
+            <text class="cuIcon-title text-orange"></text>应用场景：
+          </view>
+        </view>
+        <view class="cu-card article">
+          <view class="cu-item shadow">
+            <view class="content">
+              <view class="desc">
+                <view class="text-content">{{item.scene}}
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="cu-bar bg-white margin-top solid-bottom">
+          <view class="action">
+            <text class="cuIcon-title text-orange"></text>技术优势：
+          </view>
+        </view>
+        <view class="cu-card article">
+          <view class="cu-item shadow">
+            <view class="content">
+              <view class="desc">
+                <view class="text-content">{{item.technology}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="cu-form-group margin-top">
+          <view class="action">
+            <text class="cuIcon-title text-orange"></text>文档下载列表：
+          </view>
+        </view>
+        <checkbox-group bindchange="checkFiles">
+          <view class="cu-form-group" wx:for="{{item.files}}" wx:key="index">
+            <view class="title">{{item.filename}}</view>
+            <checkbox value="{{item.fileid}}" id="{{item.url}}"></checkbox>
+          </view>
+        </checkbox-group>
+        <view class="cu-form-group">
+          <button class="cu-btn round bg-green">发送到邮箱</button>
+          <button class="cu-btn round bg-cyan">下载文件</button>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
 </view>
+

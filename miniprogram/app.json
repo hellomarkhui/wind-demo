@@ -1,18 +1,33 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/production/home/home",
     "pages/feedback/home/home",
     "pages/about/home/home"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#39b54a",
-    "navigationBarTitleText": "Color UI",
-    "navigationStyle": "custom",
+    "backgroundColor": "#0b6fda",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#0b6fda",
+    "navigationBarTitleText": "明阳小程序",
     "navigationBarTextStyle": "white"
   },
-  "usingComponents": {
-    "cu-custom": "/colorui/components/cu-custom"
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/production/home/home",
+      "text": "产品",
+      "iconPath": "/images/tabbar/production.png",
+      "selectedIconPath": "/images/tabbar/production_cur.png"
+    }, {
+      "pagePath": "pages/feedback/home/home",
+      "text": "反馈",
+      "iconPath": "/images/tabbar/feedback.png",
+      "selectedIconPath": "/images/tabbar/feedback_cur.png"
+    }, {
+      "pagePath": "pages/about/home/home",
+      "text": "我的",
+      "iconPath": "/images/tabbar/about.png",
+      "selectedIconPath": "/images/tabbar/about_cur.png"
+    }]
   },
   "sitemapLocation": "sitemap.json"
 }

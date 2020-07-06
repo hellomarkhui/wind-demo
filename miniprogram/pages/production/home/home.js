@@ -1,107 +1,116 @@
 // pages/production/home/home.js
-const app = getApp()
-Component({
-  /**
-   * 组件的一些选项
-   */
-  options: {
-    addGlobalClass: true,
-    multipleSlots: true
-  },
-  /**
-   * 组件的属性列表
-   */
-  properties: {
+var pro_packages = require("../../../test-data/pro-packages.js").data;
+var pro_list = require("../../../test-data/pro-list.js").data;
+var pro_files = require("../../../test-data/pro-files.js").data;
+var packages_len = pro_packages.length;
+var list_len = pro_list.length;
+var files_len = pro_files.length;
 
-  },
+//添加files
+for(var i = 0; i < list_len; i++) {
+  var proId = pro_list[i].id;
+  if(!pro_list[i].files)
+    pro_list[i].files = []; //获取files
+  for(var j = 0; j < files_len; j++){
+    if(proId === pro_files[j].proId){
+      var fileId = pro_files[j].fileId;
+      pro_list[i].files.push({
+        filename: fileId.substring(fileId.lastIndexOf("/")+1,fileId.length),
+        fileid:  pro_files[j].fileId,
+        url: pro_files[j].url,
+      });
+    }   
+  }
+}
+//添加Pro
+
+Page({
 
   /**
-   * 组件的初始数据
+   * 页面的初始数据
    */
   data: {
-    StatusBar: app.globalData.StatusBar,
-    CustomBar: app.globalData.CustomBar,
-    Custom: app.globalData.Custom,
-    TabCur: 0,
-    MainCur: 0,
-    ProductionNavTop: 0,
-    list: [],
-    load: true
+    activeKey: 0,
+    active: 1,
+    curContent: 'proList', //proList为产品列表，detail为详情
+    curPackageId: pro_packages.length?pro_packages[0].id:-1,
+    curProId: -1,
+    packages: pro_packages,
+    list: pro_list
+  },
+  lookDetail(e) {
+    this.setData({
+      curContent: 'detail',
+      curProId: e.currentTarget.dataset.proid
+    })
+  },
+  detailBack(){
+    this.setData({
+      curContent: 'proList',
+    })
+  },
+  tabSelect(e) {
+    this.setData({
+      curPackageId: e.currentTarget.dataset.id,
+      curContent: 'proList',
+    })
+  },
+  checkFiles(e) {
+    console.log(e);
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
   },
 
   /**
-   * 组件的方法列表
+   * 生命周期函数--监听页面初次渲染完成
    */
-  methods: {
-    tabSelect(e) {
-      this.setData({
-        TabCur: e.currentTarget.dataset.id,
-        MainCur: e.currentTarget.dataset.id,
-        ProductionNavTop: (e.currentTarget.dataset.id - 1) * 50
-      })
-    },
-    ProductionMain(e) {
-      let that = this;
-      let list = this.data.list;
-      let tabHeight = 0;
-      if (this.data.load) {
-        for (let i = 0; i < list.length; i++) {
-          let view = wx.createSelectorQuery().select("#main-" + list[i].id);
-          view.fields({
-            size: true
-          }, data => {
-            list[i].top = tabHeight;
-            tabHeight = tabHeight + data.height;
-            list[i].bottom = tabHeight;     
-          }).exec();
-        }
-        that.setData({
-          load: false,
-          list: list
-        })
-      }
-      let scrollTop = e.detail.scrollTop + 20;
-      for (let i = 0; i < list.length; i++) {
-        if (scrollTop > list[i].top && scrollTop < list[i].bottom) {
-          that.setData({
-            ProductionNavTop: (list[i].id - 1) * 50,
-            TabCur: list[i].id
-          })
-          return false
-        }
-      }
-    }
+  onReady: function () {
+
   },
 
-  attached: function() {
-    wx.showLoading({
-      title: '加载中...',
-      mask: true
-    });
-    let list = [{}];
-    list = [
-      {
-        id: 0,
-        name: "新能源场站监控产品包",
-        childList: []
-      },
-      {
-        id: 1,
-        name: "新能源场站监控产品包",
-        childList: []
-      },
-      {
-        id: 2,
-        name: "新能源场站监控产品包",
-        childList: []
-      }
-    ];
-    this.setData({
-      list: list,
-      listCur: list[0]
-    })
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
   },
-  ready: function() {
-    wx.hideLoading();
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
   }
 })

@@ -1,2 +1,2 @@
 <!--pages/feedback/home/home.wxml-->
-<button style="background: green" bindtap="navTo"></button>
+<text>pages/feedback/home/home.wxml</text>

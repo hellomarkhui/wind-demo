@@ -1,23 +1,37 @@
 /* pages/production/home/home.wxss */
-.ProductionNav.nav {
-  width: 200rpx;
-  white-space: initial;
+scroll-view {
+  display: block;
+  width: 100%;
 }
-
-.ProductionNav.nav .cu-item {
+.main {
+  border-top: 1px solid blue;
+  display: flex;
+  height: calc(100vh - 300rpx);
+}
+.sidebar {
+  height: 100%;
+  width: 150rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.tab-item {
   width: 100%;
   text-align: center;
   background-color: #fff;
   margin: 0;
   border: none;
-  height: 50px;
+  height: 100rpx;
   position: relative;
+  display: inline-block;
+  line-height: 100rpx;
+  font-size: 20rpx;
+  padding: 0 20rpx;
 }
-
-.ProductionNav.nav .cu-item.cur {
+.tab-cur {
+  color: green;
   background-color: #f1f1f1;
 }
-.ProductionNav.nav .cu-item.cur::after {
+.tab-cur::after {
   content: "";
   width: 8rpx;
   height: 30rpx;
@@ -29,13 +43,61 @@
   bottom: 0;
   margin: auto;
 }
-.ProductionBox{
-  display: flex;
-}
-.VerticalMain{
-  background-color: #f1f1f1;
-}
 
-.nav .cu-item {
-  line-height: 50rpx;
+scroll-view.content {
+  background-color: #f1f1f1;
+  height: 100%;
+}
+.content-item {
+  padding: 30rpx 30rpx 0 30rpx;
+}
+.item-row {
+  background-color: #fff;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  transition: all .6s ease-in-out 0s;
+  transform: translateX(0rpx);
+}
+.row-img {
+  font-variant: small-caps;
+  left: 30rpx;
+  top: 30rpx;
+  display: inline-flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: #ccc;
+  color: #fff;
+  white-space: nowrap;
+  position: absolute;
+  width: 96rpx;
+  height: 96rpx;
+  background-size: cover;
+  background-position: center;
+  vertical-align: middle;
+  font-size: 1.5em;
+  border-radius: 6rpx;
+}
+.row-txt {
+  width: 100%;
+  margin-left: 156rpx;
+}
+.cu-bar {
+  display: flex;
+  position: relative;
+  align-items: center;
+  min-height: 100rpx;
+  justify-content: space-between; 
+  background: #fff;
+}
+.txt-describe {
+  min-height: 100rpx;
+  padding-right: 30rpx;
+}
+.detail {
+  padding: 30rpx 30rpx 0 30rpx;
+}
+.cu-card>.cu-item {
+  margin: 0;
 }

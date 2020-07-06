@@ -1,0 +1,16 @@
+<!--components/company-info/company-info.wxml-->
+<view class="info-title">地蕴天成，能动无限</view>
+<view>
+  <view class="info-logo">公司logo</view>
+  <view class="info-main">
+    <text>
+      简介信息
+    </text>
+    <text>
+      公司动态
+    </text>
+    <text>
+      联系我们
+    </text>
+  </view>
+</view>

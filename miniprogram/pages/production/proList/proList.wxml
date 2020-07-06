@@ -1,0 +1,15 @@
+<!--pages/production/proList/proList.wxml-->
+<view class="content-item" id="content-{{pro.id}}">
+      <view class="item-row">
+        <view class="row-img">
+          图片
+        </view>
+        <view class="row-txt">
+          <view class="cu-bar">{{ pro.name }}</view>
+          <view class="text-gray text-sm flex txt-describe">
+            {{pro.describe}}
+          </view>
+          <view class="cu-bar"><button class="cu-btn" bindtap="lookDetail">详情</button></view>
+        </view>
+      </view>
+    </view>

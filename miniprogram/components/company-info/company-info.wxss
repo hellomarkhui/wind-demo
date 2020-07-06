@@ -1,0 +1,23 @@
+/* components/company-info/company-info.wxss */
+.info-title {
+  background: orange;
+  height: 80rpx;
+  font-size: 40rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+.info-logo {
+  background: palegreen;
+  padding: 10rpx;
+  width: 150rpx;
+  height: 150rpx;
+  text-align: center;
+  float: left;
+}
+.info-main {
+  background: lightblue;
+  padding-left: 10rpx;
+  margin-left: 170rpx;
+  height: 220rpx;
+  line-height: 30rpx;
+}
