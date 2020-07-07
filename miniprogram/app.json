@@ -2,6 +2,8 @@
   "pages": [
     "pages/production/home/home",
     "pages/feedback/home/home",
+    "pages/feedback/form/form",
+    "pages/feedback/history/history",
     "pages/about/home/home"
   ],
   "window": {
@@ -12,22 +14,26 @@
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
-    "list": [{
-      "pagePath": "pages/production/home/home",
-      "text": "产品",
-      "iconPath": "/images/tabbar/production.png",
-      "selectedIconPath": "/images/tabbar/production_cur.png"
-    }, {
-      "pagePath": "pages/feedback/home/home",
-      "text": "反馈",
-      "iconPath": "/images/tabbar/feedback.png",
-      "selectedIconPath": "/images/tabbar/feedback_cur.png"
-    }, {
-      "pagePath": "pages/about/home/home",
-      "text": "我的",
-      "iconPath": "/images/tabbar/about.png",
-      "selectedIconPath": "/images/tabbar/about_cur.png"
-    }]
+    "list": [
+      {
+        "pagePath": "pages/production/home/home",
+        "text": "产品",
+        "iconPath": "/images/tabbar/production.png",
+        "selectedIconPath": "/images/tabbar/production_cur.png"
+      },
+      {
+        "pagePath": "pages/feedback/home/home",
+        "text": "反馈",
+        "iconPath": "/images/tabbar/feedback.png",
+        "selectedIconPath": "/images/tabbar/feedback_cur.png"
+      },
+      {
+        "pagePath": "pages/about/home/home",
+        "text": "我的",
+        "iconPath": "/images/tabbar/about.png",
+        "selectedIconPath": "/images/tabbar/about_cur.png"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json"
 }

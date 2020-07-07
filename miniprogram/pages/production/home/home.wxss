@@ -3,11 +3,6 @@ scroll-view {
   display: block;
   width: 100%;
 }
-.main {
-  border-top: 1px solid blue;
-  display: flex;
-  height: calc(100vh - 300rpx);
-}
 .sidebar {
   height: 100%;
   width: 150rpx;

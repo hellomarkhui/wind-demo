@@ -1,0 +1,47 @@
+<!--pages/feedback/history/history.wxml-->
+<scroll-view  class="content" scroll-y="true" >
+        <view class="cu-bar bg-white margin-top solid-bottom">
+          <view class="action">
+            <text class="cuIcon-title text-orange"></text>时间：{{date}}
+          </view>
+        </view>
+        <view class="cu-bar bg-white margin-top solid-bottom">
+          <view class="action">
+            <text class="cuIcon-title text-orange"></text>类型：{{type}}
+          </view>
+        </view>
+        <view class="cu-bar bg-white margin-top solid-bottom">
+          <view class="action">
+            <text class="cuIcon-title text-orange"></text>风电场名称：{{name}}
+          </view>
+        </view>
+
+        <view class="cu-bar bg-white margin-top solid-bottom">
+          <view class="action">
+            <text class="cuIcon-title text-orange"></text>简要描述：
+          </view>
+        </view>
+        <view class="cu-card article  no-card">
+          <view class="cu-item shadow">
+            <view class="content">
+              <view class="text-content">{{describe}}
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="cu-bar bg-white margin-top solid-bottom">
+          <view class="action">
+            <text class="cuIcon-title text-orange"></text>评价：
+          </view>
+        </view>
+        <view class="cu-card article no-card">
+          <view class="cu-item shadow">
+            <view class="content">
+              <view class="text-content">{{comment}}
+              </view>
+            </view>
+          </view>
+        </view>
+
+</scroll-view>

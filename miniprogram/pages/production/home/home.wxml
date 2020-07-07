@@ -6,9 +6,10 @@
       {{item.name}}
     </view>
   </scroll-view>
-  <scroll-view  class="content {{curContent==='proList'?'':'hide'}}" scroll-y="true">
-    <view class="content-item {{curPackageId===item.proPackageId?'':'hide'}}" 
-    id="content-{{index}}" wx:for="{{list}}" wx:key="id" >
+  <scroll-view  class="content" wx:if="{{curContent==='proList' && curPackageId===item.id}}" scroll-y="true" 
+    wx:for="{{packages}}" wx:key="id">
+    <view class="content-item" wx:if="{{curPackageId===item.proPackageId}}"
+    id="content-{{index}}" wx:for="{{list}}" wx:key="id">
       <view class="item-row">
         <view class="row-img">
           图片
@@ -25,8 +26,8 @@
       </view>
     </view>
   </scroll-view>
-  <scroll-view  class="content {{curContent==='detail'?'':'hide'}}" scroll-y="true" >
-    <view class="detail  {{curProId===item.id?'':'hide'}}" wx:for="{{list}}" wx:key="id">
+  <scroll-view  class="content" wx:if="{{curContent==='detail'}}" scroll-y="true" >
+    <view class="detail" wx:if="{{curProId===item.id}}" wx:for="{{list}}" wx:key="id">
       <view class="box">
         <view class="cu-bar bg-white">
           <view class="action" bindtap="detailBack">

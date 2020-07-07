@@ -1,18 +1,32 @@
 // pages/feedback/home/home.js
+const db = wx.cloud.database();
+const MAX_LIMIT = 100;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    questionList:[]
   },
-
+  addRequest: function(e){
+    wx.navigateTo({
+      url: '../form/form',
+    })
+  },
+  getQuestionList: function(){
+    db.collection('questionlist').get().then(res => {
+      // res.data 是一个包含集合中有权限访问的所有记录的数据，不超过 20 条
+      this.setData({
+        questionList: res.data
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+   // getQuestionList();
   },
 
   /**
@@ -26,7 +40,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getQuestionList();
   },
 
   /**

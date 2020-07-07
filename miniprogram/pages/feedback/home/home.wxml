@@ -1,2 +1,19 @@
 <!--pages/feedback/home/home.wxml-->
-<text>pages/feedback/home/home.wxml</text>
+<company-info></company-info>
+<scroll-view class="main" scroll-y="true">
+  <view class="cu-form-group flex solid-bottom padding justify-center">
+    <button class="cu-btn bg-red lg" bindtap="addRequest">添加需求或问题</button>
+  </view>
+  <view class="cu-bar bg-white solid-bottom margin-top">
+    <view class="action">
+      <text class="cuIcon-title text-orange "></text> 历史问题列表
+    </view>
+  </view>
+  <view class="cu-list menu sm-border">
+    <view class="cu-item arrow" wx:for="{{questionList}}" wx:key="id">
+      <navigator class="content" hover-class="none" url="../history/history?id={{item._id}}">
+        <text class="text-grey">问题{{index}}：{{item.name}}({{item.date}})</text>
+      </navigator>
+    </view>
+  </view>
+</scroll-view>

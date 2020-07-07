@@ -1,35 +1,35 @@
-// pages/about/home/home.js
+// pages/feedback/history/history.js
+const db = wx.cloud.database()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    type: "",
+    name: "",
+    describe: "",
+    factory: "",
+    industry: "",
+    comment: "",
+    date: "",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.setStorage({
-      key:"key",
-      data:"value"
+    wx.showLoading({
+      title: '加载中',
     })
-    wx.getStorage({
-      key: 'key',
-      success (res) {
-        console.log(res.data)
+    db.collection('questionlist').doc(options.id).get().then(
+      res => {
+        this.setData(res.data);
+        wx.hideLoading();
       }
-    })
-    wx.getStorage({
-      key: 'key1',
-      success (res) {
-        console.log(res.data)
-      },
-      fail(res){
-        console.log(res)
-      }
+    ).catch(err => {
+      wx.hideLoading();
+      console.log(err)
     })
   },
 

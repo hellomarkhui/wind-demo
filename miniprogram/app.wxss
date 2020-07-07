@@ -2,9 +2,7 @@
 @import "colorui/main.wxss";
 @import "colorui/icon.wxss";
 
-.hide {
-  display: none;
-}
-.show {
-  display: block;
+.main {
+  display: flex;
+  height: calc(100vh - 300rpx);
 }

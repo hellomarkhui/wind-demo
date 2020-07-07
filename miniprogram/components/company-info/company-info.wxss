@@ -18,6 +18,9 @@
   background: lightblue;
   padding-left: 10rpx;
   margin-left: 170rpx;
-  height: 220rpx;
+  height: 218rpx;
   line-height: 30rpx;
+}
+.info-content {
+  border-bottom: 2rpx solid lightblue;
 }
