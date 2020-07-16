@@ -3,14 +3,22 @@
 <view class="info-content">
   <view class="info-logo">公司logo</view>
   <view class="info-main">
-    <text>
-      简介信息
-    </text>
-    <text>
-      公司动态
-    </text>
-    <text>
-      联系我们
-    </text>
+    <swiper indicator-dots="true" autoplay="true" circular="true" interval="3000">
+      <swiper-item>
+        <view class="swiper-item swiper-item1">
+          <text>简介信息</text>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view class="swiper-item swiper-item2">
+          <text>公司动态</text>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view class="swiper-item swiper-item3">
+          <text>联系我们</text>
+        </view>
+      </swiper-item>
+    </swiper>
   </view>
 </view>

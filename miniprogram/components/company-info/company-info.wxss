@@ -9,18 +9,41 @@
 .info-logo {
   background: palegreen;
   padding: 10rpx;
-  width: 150rpx;
-  height: 150rpx;
+  width: 170rpx;
+  height: 218rpx;
+  line-height: 218rpx;
   text-align: center;
   float: left;
 }
 .info-main {
-  background: lightblue;
-  padding-left: 10rpx;
   margin-left: 170rpx;
   height: 218rpx;
   line-height: 30rpx;
 }
-.info-content {
-  border-bottom: 2rpx solid lightblue;
+.info-main > swiper {
+  width: 100%;
+  height: 100%;
+}
+.swiper-item {
+  position: relative;
+  height: 100%;
+  line-height: 100%;
+  color: #fff;
+  font-size: 40rpx;
+  text-align: center;
+} 
+.swiper-item1 {
+  background-color: #1AAD19;
+}
+.swiper-item2 {
+  background-color: #2782D7;
+}
+.swiper-item3 {
+  background-color: palevioletred;
+}
+.swiper-item > text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
 }

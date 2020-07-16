@@ -1,0 +1,16 @@
+<!--pages/about/userinfo/userinfo.wxml-->
+<scroll-view class="main" scroll-y="true">
+  <i-panel title="您的账号信息">
+    <van-cell-group>
+      <van-cell title="昵称" value="{{nickname}}" />
+      <van-cell title="姓名" value="{{name}}" />
+      <van-cell title="邮箱" value="{{email}}" />
+      <van-cell title="单位" value="{{company}}" />
+      <van-cell title="职务" value="{{job}}" />
+      <van-cell title="联系电话" value="{{tel}}" />
+    </van-cell-group>
+  </i-panel>
+</scroll-view>
+
+
+

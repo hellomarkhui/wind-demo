@@ -1,5 +1,4 @@
 {
-  "usingComponents": {
-    "company-info": "/components/company-info/company-info"
+  "usingComponents": {   
   }
 }

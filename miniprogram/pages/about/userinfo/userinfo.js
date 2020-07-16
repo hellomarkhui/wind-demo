@@ -1,5 +1,6 @@
-// pages/about/home/home.js
+// pages/about/userinfo/userinfo.js
 const db = wx.cloud.database();
+const app = getApp();
 Page({
 
   /**
@@ -12,32 +13,23 @@ Page({
     company: "",
     job: "",
     tel: "",
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
   },
-
-  getUserInfo(){
+  getUserInfo() {
     const that = this;
-    
-    // 查看是否授权
-    wx.getSetting({
-      success (res){
-        if (res.authSetting['scope.userInfo']) {
-          that.setData({
-            isAuth: true
-          })
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.getUserInfo({
-            success: function(res) {
-              that.setData(res.userInfo)
-            }
-          })
-        }
+    db.collection('user').where({
+      _openid: app.globalData.openid
+    })
+    .get().then(res => {
+      if(res.data.length === 1){
+        //已注册
+        const info = res.data[0];
+        that.setData(info);
       }
-      ,fail(){
-        console.log("未授权登录");
-      }
-    });
+    }).catch(err => {
+      console.log("判断注册状态失败"+err);
+    })
   },
+  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -45,9 +37,6 @@ Page({
     this.getUserInfo();
   },
 
-  bindGetUserInfo (e) {
-   // console.log(e.detail.userInfo)
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

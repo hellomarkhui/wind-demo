@@ -26,6 +26,12 @@
     </view>
   </view>
   <view class="cu-form-group">
+    <view class="cu-item arrow">录音:</view>
+    <navigator class="content" hover-class="none" url="">
+        
+    </navigator>
+  </view>
+  <view class="cu-form-group">
     <view class="title">主机厂家:</view>
     <input placeholder="" name="factory"></input>
   </view>

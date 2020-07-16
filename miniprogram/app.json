@@ -4,7 +4,9 @@
     "pages/feedback/home/home",
     "pages/feedback/form/form",
     "pages/feedback/history/history",
-    "pages/about/home/home"
+    "pages/about/home/home",
+    "pages/about/userinfo/userinfo",
+    "pages/login/login"
   ],
   "window": {
     "backgroundColor": "#0b6fda",
@@ -34,6 +36,9 @@
         "selectedIconPath": "/images/tabbar/about_cur.png"
       }
     ]
+  },
+  "usingComponents": {
+    "company-info": "/components/company-info/company-info"
   },
   "sitemapLocation": "sitemap.json"
 }

@@ -25,7 +25,7 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": true,
+		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"appid": "wxbfd311a7c1c48db5",
@@ -74,6 +74,12 @@
 					"name": "pages/about/home/home",
 					"pathName": "pages/about/home/home",
 					"query": "id=b7d9f2ea5f042773008472ae0c3ddfcb",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/feedback/form/form",
+					"pathName": "pages/feedback/form/form",
 					"scene": null
 				}
 			]

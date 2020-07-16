@@ -1,4 +1,4 @@
-/* pages/about/home/home.wxss */
+/* pages/login/login.wxss */
 .userinfo{
   height: 140rpx;
   width: 100%;

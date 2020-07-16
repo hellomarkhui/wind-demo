@@ -16,51 +16,10 @@
       {{nickName}}，您好！
     </view>
   </view>
-  <block wx:if="{{!isSignUp}}">
-    <view class="cu-bar bg-white">
-      <view class="action">
-        <view class="cuIcon-title text-green">您还未注册，请先注册</view>
-      </view> 
-    </view>
-    <!-- <i-tabs current="{{ current }}" bindchange="signChange">
-      <i-tab key="signin" title="登录"></i-tab>
-      <i-tab key="signup" title="注册"></i-tab>
-    </i-tabs> -->
-    <i-panel title="注册信息">
-        <i-input value="{{ nickname }}" title="昵称" autofocus placeholder="请输入昵称"  maxlength="100" bind:change="nicknameChange" />
-        <!-- <i-input value="{{ password }}" type="password" title="密码" placeholder="请输入密码"  maxlength="100"/> -->
-        <!-- <view wx:if="{{current==='signup'}}"> -->
-        <view>
-          <!-- <i-input value="{{ confirmPassword }}" title="确认密码" placeholder="请确认密码"  maxlength="100"/> -->
-          <i-input value="{{ name }}" title="姓名" placeholder="请输入姓名" maxlength="100"
-          bind:change="nameChange"/>
-          <i-input value="{{ email }}" title="邮箱" placeholder="请输入邮箱" maxlength="100"
-          bind:change="emailChange"/>
-          <i-input value="{{ company }}" title="单位" placeholder="请输入单位" maxlength="100"
-          bind:change="companyChange"/>
-          <i-input value="{{ job }}" title="职务" placeholder="请输入职务" maxlength="100"
-          bind:change="jobChange"/>
-          <i-input value="{{ tel }}" type="number" title="联系电话" placeholder="请输入联系电话" maxlength="20"
-          bind:change="telChange"/>
-        </view>
-    </i-panel>
-    <view class="padding">
-      <button class="cu-btn block bg-red lg" bindtap="signUp">注册</button>
-    </view>
-  </block> 
-  <block wx:else>
-    <i-panel title="您的账号信息">
+  <block>
+    <i-panel title="操作">
       <van-cell-group>
-        <van-cell title="昵称" value="{{nickname}}" />
-        <van-cell title="姓名" value="{{name}}" />
-        <van-cell title="邮箱" value="{{email}}" />
-        <van-cell title="单位" value="{{company}}" />
-        <van-cell title="职务" value="{{job}}" />
-        <van-cell title="联系电话" value="{{tel}}" />
-      </van-cell-group>
-    </i-panel>
-    <i-panel title="其他操作">
-      <van-cell-group>
+        <van-cell title="个人信息" url="../userinfo/userinfo" is-link link-type="navigateTo" />
         <van-cell title="客服" is-link link-type="navigateTo" />
         <van-cell title="我的钱包" is-link link-type="navigateTo" />
       </van-cell-group>

@@ -11,9 +11,7 @@
     <view class="content-item" wx:if="{{curPackageId===item.proPackageId}}"
     id="content-{{index}}" wx:for="{{list}}" wx:key="id">
       <view class="item-row">
-        <view class="row-img">
-          图片
-        </view>
+        <view class="row-img">图片</view>
         <view class="row-txt">
           <view class="cu-bar"> {{ item.name }}</view>
           <view class="text-gray text-sm flex txt-describe">
@@ -93,7 +91,7 @@
           </view>
         </view>
 
-        <view class="cu-form-group margin-top">
+        <view class="cu-bar bg-white margin-top solid-bottom">
           <view class="action">
             <text class="cuIcon-title text-orange"></text>文档下载列表：
           </view>
@@ -101,13 +99,18 @@
         <checkbox-group bindchange="checkFiles">
           <view class="cu-form-group" wx:for="{{item.files}}" wx:key="index">
             <view class="title">{{item.filename}}</view>
-            <checkbox value="{{item.fileid}}" id="{{item.url}}"></checkbox>
+            <checkbox value="{{item.fileid}}" id="1111"></checkbox>
           </view>
         </checkbox-group>
         <view class="cu-form-group">
-          <button class="cu-btn round bg-green">发送到邮箱</button>
-          <button class="cu-btn round bg-cyan">下载文件</button>
+          <button class="cu-btn round bg-green" catchtap="sendEmail">发送到邮箱</button>
+          <button class="cu-btn round bg-cyan" catchtap="loadFile">下载文件</button>
         </view>
+        <i-panel title="已下载文件列表" wx:if="{{downloadFilePaths.length}}">
+          <van-cell-group>
+            <van-cell wx:for="{{downloadFilePaths}}" wx:key="*item" title="{{item.title}}" value="打开" is-link data-url="{{item.filePath}}" bind:click="openFile" />
+          </van-cell-group>
+        </i-panel>
       </view>
     </view>
   </scroll-view>

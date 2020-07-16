@@ -1,7 +1,7 @@
-// pages/about/home/home.js
+// pages/login/login.js
+const app = getApp();
 const db = wx.cloud.database();
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -14,10 +14,74 @@ Page({
     tel: "",
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
   },
+  nicknameChange(e){
+    this.setData({nickname: e.detail.detail.value})
+  },
+  nameChange(e){
+    this.setData({name: e.detail.detail.value})
+  },
+  emailChange(e){
+    this.setData({email: e.detail.detail.value})
+  },
+  companyChange(e){
+    this.setData({company: e.detail.detail.value})
+  },
+  jobChange(e){
+    this.setData({job: e.detail.detail.value})
+  },
+  telChange(e){
+    this.setData({tel: e.detail.detail.value})
+  },
 
+   // 提交注册信息到数据库
+   signUp() {
+    const that = this;
+    if(''== this.data.nickname){
+      return ;
+    }
+    if(''==this.data.name){
+      return ;
+    }
+    if(''==this.data.email){
+      return ;
+    }
+    wx.showLoading({
+      title: '正在注册',
+    })
+    db.collection('user').add({
+      // data 字段表示需新增的 JSON 数据
+      data: {
+        nickname: this.data.nickname,
+        name: this.data.name,
+        email: this.data.email,
+        company: this.data.company,
+        job: this.data.job,
+        tel: this.data.tel
+      }
+    })
+    .then(res => {
+      wx.hideLoading();
+      wx.showToast({
+        title: '注册成功',
+        icon: 'success',
+        duration: 2000
+      });
+      app.globalData.isSignUp = true;
+      app.globalData.isLogin = true;
+      wx.switchTab({
+        url: '../production/home/home',
+      })
+    }).catch(err => {
+      wx.hideLoading();
+      wx.showToast({
+        title: '注册失败',
+        icon: 'none',
+        duration: 1000
+      });
+    })
+  },
   getUserInfo(){
     const that = this;
-    
     // 查看是否授权
     wx.getSetting({
       success (res){
@@ -45,9 +109,6 @@ Page({
     this.getUserInfo();
   },
 
-  bindGetUserInfo (e) {
-   // console.log(e.detail.userInfo)
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
