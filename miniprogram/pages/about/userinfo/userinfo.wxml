@@ -1,6 +1,6 @@
 <!--pages/about/userinfo/userinfo.wxml-->
 <scroll-view class="main" scroll-y="true">
-  <i-panel title="您的账号信息">
+  <i-panel title="您的账号信息" wx:if="{{!isEdit}}">
     <van-cell-group>
       <van-cell title="昵称" value="{{nickname}}" />
       <van-cell title="姓名" value="{{name}}" />
@@ -9,6 +9,26 @@
       <van-cell title="职务" value="{{job}}" />
       <van-cell title="联系电话" value="{{tel}}" />
     </van-cell-group>
+    <view class="cu-form-group flex solid-bottom padding justify-center">
+      <button class="cu-btn bg-red lg" bindtap="edit">编辑</button>
+    </view>
+  </i-panel>
+  <i-panel title="编辑账号信息" wx:else>
+      <i-input value="{{ nickname }}" title="昵称" autofocus placeholder="请输入昵称"  maxlength="100" bind:change="nicknameChange" />
+      <i-input value="{{ name }}" title="姓名" placeholder="请输入姓名" maxlength="100"
+      bind:change="nameChange"/>
+      <i-input value="{{ email }}" title="邮箱" placeholder="请输入邮箱" maxlength="100"
+      bind:change="emailChange"/>
+      <i-input value="{{ company }}" title="单位" placeholder="请输入单位" maxlength="100"
+      bind:change="companyChange"/>
+      <i-input value="{{ job }}" title="职务" placeholder="请输入职务" maxlength="100"
+      bind:change="jobChange"/>
+      <i-input value="{{ tel }}" type="number" title="联系电话" placeholder="请输入联系电话" maxlength="20"
+      bind:change="telChange"/>
+      <view class="cu-form-group flex solid-bottom padding justify-center">
+        <button class="cu-btn bg-blue lg" bindtap="cancel">取消</button>
+        <button class="cu-btn bg-red lg" bindtap="commit">保存</button>
+      </view>
   </i-panel>
 </scroll-view>
 
