@@ -99,24 +99,43 @@ Page({
     wx.showLoading({
       title: '发送邮件中',
     })
-    wx.cloud.callFunction({
-      name: "sendEmail",
-      data: {
-        attachments: sendFiles
+    //获取邮箱
+    db.collection("user").where({
+      _openid: app.globalData.openid
+    }).get().then(res => {
+      console.log(res.data[0].email)
+      if(!res.data.length){
+        wx.hideLoading();
+        wx.showToast({
+          title: '失败',
+        })
+        console.log("邮件地址获取失败")
       }
-    }).then( res => {
-      this.setData({
-        result: res
-      })
-      wx.hideLoading();
-      wx.showToast({
-        title: '成功',
-      })
-      console.log("发送成功",res);
+      else {
+        wx.cloud.callFunction({
+          name: "sendEmail",
+          data: {
+            attachments: sendFiles,
+            email: res.data[0].email
+          }
+        }).then( res => {
+          this.setData({
+            result: res
+          })
+          wx.hideLoading();
+          wx.showToast({
+            title: '成功',
+          })
+          console.log("发送成功",res);
+        }).catch( err => {
+          console.log("发送失败",err);
+          wx.hideLoading();
+        });
+      }
     }).catch( err => {
       console.log("发送失败",err);
       wx.hideLoading();
-    });
+    })
   },
   openFile(e){
     wx.openDocument({
@@ -174,7 +193,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    app.login();
+  //  app.login();
   },
 
   /**

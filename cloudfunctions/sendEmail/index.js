@@ -23,7 +23,7 @@ exports.main = async (event, context) => {
    var mail = {
     from: "韦汉辉<1106619766@qq.com>" //发件人，随意写？
     ,subject: "来自明阳小程序的文件发送邮件" //邮件主题
-    ,to: "weihanhui@mywind.com.cn"// 收件列表,可以多个，也就是群发，用逗号","隔开
+    ,to: event.email // 收件列表,可以多个，也就是群发，用逗号","隔开
     ,text: "" //发送文本
     ,html: "您需要的附件如下" //发送html代码
     ,attachments: event.attachments

@@ -14,7 +14,7 @@ App({
       })
     }
   },
-  login(callback){
+  login(){
     if(this.globalData.isSignUp)
       return;
     else{
@@ -63,6 +63,34 @@ App({
         };
         return fmt;
     }
+  },
+  getUserInfo() {
+    const that = this;
+    wx.getSetting({
+      success (res){
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function(res) {
+              that.globalData.userInfo = res.userInfo
+              console.log("that",that.globalData.userInfo)
+            }
+          })
+        }
+      }
+      ,fail(){
+        console.log("未授权登录");
+      }
+    })
+  },
+  onShow() {
+    this.login(res => {
+      if(!res){
+        wx.redirectTo({
+          url: 'pages/login/login',
+        })
+      }
+    });
   },
   /* 返回promise对象
       then参数为

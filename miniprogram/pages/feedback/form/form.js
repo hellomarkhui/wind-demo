@@ -9,6 +9,7 @@ Page({
   data: {
     typeIndex: null,
     type: ['问题', '需求'],
+    voice_list: [{path:"1",time: "00:05:00"},{path:"2",time: "00:08:00"}]
   },
 
   typeChange: function(e) {
@@ -99,5 +100,10 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  addVoice() {
+    wx.navigateTo({
+      url: './voice/voice',
+    })
   }
 })

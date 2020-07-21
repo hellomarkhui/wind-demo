@@ -2,17 +2,17 @@
 <scroll-view  class="content" scroll-y="true" >
         <view class="cu-bar bg-white margin-top solid-bottom">
           <view class="action">
-            <text class="cuIcon-title text-orange"></text>时间：{{date}}
+            <text class="cuIcon-title text-orange"></text>时间：{{question.date}}
           </view>
         </view>
         <view class="cu-bar bg-white margin-top solid-bottom">
           <view class="action">
-            <text class="cuIcon-title text-orange"></text>类型：{{type}}
+            <text class="cuIcon-title text-orange"></text>类型：{{question.type}}
           </view>
         </view>
         <view class="cu-bar bg-white margin-top solid-bottom">
           <view class="action">
-            <text class="cuIcon-title text-orange"></text>风电场名称：{{name}}
+            <text class="cuIcon-title text-orange"></text>风电场名称：{{question.name}}
           </view>
         </view>
 
@@ -24,24 +24,58 @@
         <view class="cu-card article  no-card">
           <view class="cu-item shadow">
             <view class="content">
-              <view class="text-content">{{describe}}
+              <view class="text-content">{{question.describe}}
               </view>
             </view>
           </view>
         </view>
 
-        <view class="cu-bar bg-white margin-top solid-bottom">
-          <view class="action">
-            <text class="cuIcon-title text-orange"></text>评价：
+  <view class="cu-bar bg-white margin-top solid-bottom">
+    <view class="action">
+      <text class="cuIcon-title text-orange"></text>评论列表：
+    </view>
+  </view>
+  <view class="cu-list menu menu-avatar comment solids-top">
+    <block wx:if="{{comment_list.length}}" wx:for="{{comment_list}}" wx:for-index="index" wx:for-item="clist" wx:key>
+      <view class="cu-item" wx:if="{{clist.reply_id == 0}}">
+        <view class="cu-avatar round" style="background-image:url({{clist.comment_user_avatar}});"></view>
+        <view class='content'>
+          <view class='text-grey'>{{clist.comment_user_name}}</view>
+          <view class='text-gray text-content text-df margin-top-xs' bindtap='replyComment' data-name='{{clist.comment_user_name}}' data-cid='{{clist._id}}' data-type="1" data-pid="{{clist._id}}">
+            {{clist.comment_text}}
           </view>
-        </view>
-        <view class="cu-card article no-card">
-          <view class="cu-item shadow">
-            <view class="content">
-              <view class="text-content">{{comment}}
+          <block wx:for="{{comment_list2}}" wx:key wx:for-index="c2" wx:for-item="clist2">
+            <view class='bg-grey text-sm padding-as' wx:if="{{clist2.parent_id==clist._id}}">
+            
+              <view class="flex" bindtap='replyComment' data-name='{{clist2.comment_user_name}}' data-cid='{{clist2._id}}' data-type="2" data-pid="{{clist2.parent_id}}">
+                <view wx:if="{{clist2.reply_name.length>0}}">{{clist2.comment_user_name}} 回复 {{clist2.reply_name}}：</view>
+                <block wx:else>
+                  <view>{{clist2.comment_user_name}}：</view>
+                </block>
+                <view class='flex-sub'>{{clist2.comment_text}}</view>
               </view>
+             
             </view>
+         </block>
+          <view class='margin-top-sm flex justify-between'>
+            <view class='text-gray text-df'>{{clist.comment_time}}</view>
           </view>
         </view>
-
+      </view>
+    </block>
+    <block wx:if="{{!comment_list.length}}">
+      <text>评论列表为空</text>
+    </block>
+  </view>
+  <view class="cu-bar foot input">
+    <view class="cu-avatar round" style="background-image:url({{userinfo.avatarUrl}});"></view>
+    <view class="action">
+      <text class="cuIcon-roundaddfill text-grey"></text>
+    </view>
+    <input class="solid-bottom" maxlength="300" cursor-spacing="10" value="{{comment_text}}" placeholder='{{placeholder}}' focus="{{focus}}" bindblur="onReplyBlur" bindinput='getCommentText'></input>
+    <view class="action">
+      <text class="cuIcon-emojifill text-grey"></text>
+    </view>
+    <button class="cu-btn bg-green shadow-blur" bindtap='sendComment'>发送</button>
+  </view>
 </scroll-view>

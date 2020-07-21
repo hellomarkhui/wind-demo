@@ -43,6 +43,7 @@ Page({
    */
   onLoad: function (options) {
     this.getUserInfo();
+    console.log(getCurrentPages());
   },
 
   bindGetUserInfo (e) {

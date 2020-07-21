@@ -1,0 +1,9 @@
+/* pages/feedback/form/voice/voice.wxss */
+.time {
+  display: flex;
+  height: 400rpx;
+  background-color: springgreen;
+  font-size: 48rpx;
+  justify-content: center;
+  align-items: center;
+}

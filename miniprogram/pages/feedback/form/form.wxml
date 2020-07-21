@@ -13,35 +13,43 @@
   </view>
   <view class="cu-form-group">
     <view class="title">风电场名称:</view>
-    <input placeholder="" name="name" ></input>
+    <input placeholder="请填写风电场名称" name="name" ></input>
   </view>
   <view class="cu-form-group align-start">
     <view class="title">描述:</view>
-    <textarea maxlength="-1" name="describe" placeholder="请描述"></textarea>
+    <textarea maxlength="-1" name="describe" placeholder="请填写描述"></textarea>
   </view>
   <view class="cu-form-group">
     <view class="title">附件上传:</view>
     <view class="action">
-      <button class="cu-btn round bg-green">点击上传</button>
+      <button class="cu-btn round bg-green">上传</button>
     </view>
   </view>
   <view class="cu-form-group">
-    <view class="cu-item arrow">录音:</view>
-    <navigator class="content" hover-class="none" url="">
-        
-    </navigator>
+    <view class="title"><text class="cuIcon-title text-orange"></text>录音列表：</view>
+    <view class="action">
+      <button class="cu-btn round bg-green" catchtap="addVoice">添加</button>
+    </view>
   </view>
+  <view class="cu-list menu sm-border">
+    <view class="cu-item" wx:for="{{voice_list}}" wx:for-item="voice">
+      <view class="content">
+        <text class="text-grey">{{index}}、</text>
+        <text class="text-grey">录音时长：{{voice.time}}</text>
+      </view>
+      <view class="action">
+        <button class="cu-btn round bg-red">删除</button>
+      </view>
+    </view>
+  </view>
+
   <view class="cu-form-group">
     <view class="title">主机厂家:</view>
-    <input placeholder="" name="factory"></input>
+    <input placeholder="请填写主厂家" name="factory"></input>
   </view>
   <view class="cu-form-group">
     <view class="title">行业:</view>
-    <input placeholder="" name="industry"></input>
-  </view>
-  <view class="cu-form-group align-start">
-    <view class="title">评价:</view>
-    <textarea maxlength="-1" name="comment" placeholder="请评价"></textarea>
+    <input placeholder="请填写行业" name="industry"></input>
   </view>
   <view class="cu-form-group flex solid-bottom padding justify-center">
     <button class="cu-btn bg-red lg" form-type="submit">提交</button>

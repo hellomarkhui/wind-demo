@@ -1,1 +1,4 @@
 /* pages/feedback/form/form.wxss */
+view.van-cell {
+  font-size: 30rpx;
+}

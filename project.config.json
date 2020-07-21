@@ -64,13 +64,6 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/feedback/home/home",
-					"pathName": "pages/feedback/home/home",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "pages/about/home/home",
 					"pathName": "pages/about/home/home",
 					"query": "id=b7d9f2ea5f042773008472ae0c3ddfcb",
@@ -80,6 +73,14 @@
 					"id": -1,
 					"name": "pages/feedback/form/form",
 					"pathName": "pages/feedback/form/form",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/feedback/history/history",
+					"pathName": "pages/feedback/history/history",
+					"query": "id=b7d9f2ea5f042773008472ae0c3ddfcb",
 					"scene": null
 				}
 			]

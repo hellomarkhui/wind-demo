@@ -1,6 +1,7 @@
 // pages/about/userinfo/userinfo.js
 const db = wx.cloud.database();
 const app = getApp();
+import Toast from '../../../miniprogram_npm/@vant/weapp/toast/toast';
 Page({
 
   /**

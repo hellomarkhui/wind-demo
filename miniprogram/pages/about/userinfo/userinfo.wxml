@@ -14,7 +14,7 @@
     </view>
   </i-panel>
   <i-panel title="编辑账号信息" wx:else>
-      <i-input value="{{ nickname }}" title="昵称" autofocus placeholder="请输入昵称"  maxlength="100" bind:change="nicknameChange" />
+      <i-input value="{{ nickname }}" title="昵称" name="tiadsaf" autofocus placeholder="请输入昵称"  maxlength="100" bind:change="nicknameChange" />
       <i-input value="{{ name }}" title="姓名" placeholder="请输入姓名" maxlength="100"
       bind:change="nameChange"/>
       <i-input value="{{ email }}" title="邮箱" placeholder="请输入邮箱" maxlength="100"
