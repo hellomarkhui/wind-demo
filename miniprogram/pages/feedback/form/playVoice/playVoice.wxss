@@ -1,4 +1,4 @@
-/* pages/feedback/form/voice/voice.wxss */
+/* pages/feedback/form/playVoice/playVoice.wxss */
 .time {
   display: flex;
   height: 400rpx;

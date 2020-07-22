@@ -30,6 +30,25 @@
           </view>
         </view>
 
+  <view class="cu-form-group">
+    <view class="title">录音列表：</view>
+  </view>
+  <view class="cu-list menu sm-border">
+    <view wx:if="{{question.voice_list.length}}" class="cu-item" wx:for="{{question.voice_list}}" wx:for-item="voice">
+      <view class="content">
+        <text class="text-grey">{{index}}、录音时长：{{voice.recordTime}}s</text>
+      </view>
+      <view class="action">
+        <button class="cu-btn round bg-red" data-path="{{voice.voiceFileID}}" data-recordtime="{{voice.recordTime}}" catchtap="playVoice">播放</button>
+      </view>
+    </view>
+    <view class="cu-item" wx:if="{{!question.voice_list.length}}">
+      <view class="content">
+        <text class="text-grey">未上传录音</text>
+      </view>
+    </view>
+  </view>
+
   <view class="cu-bar bg-white margin-top solid-bottom">
     <view class="action">
       <text class="cuIcon-title text-orange"></text>评论列表：

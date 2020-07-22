@@ -1,5 +1,6 @@
 <view class="time">
-  <text>{{formatedRecordTime}}</text>
+  <view wx:if="{{recording}}">录音中</view>
+  <view>{{formatedRecordTime}}</view>
 </view>
 <view class="padding flex flex-direction">
   <button wx:if="{{!recording && !hasRecord}}" class="cu-btn bg-green lg" bindtap="startRecord">开始录音</button>

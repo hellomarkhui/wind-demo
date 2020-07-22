@@ -4,6 +4,7 @@
     "pages/feedback/home/home",
     "pages/feedback/form/form",
     "pages/feedback/form/voice/voice",
+    "pages/feedback/form/playVoice/playVoice",
     "pages/feedback/history/history",
     "pages/about/home/home",
     "pages/about/userinfo/userinfo",

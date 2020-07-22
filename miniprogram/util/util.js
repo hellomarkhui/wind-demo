@@ -85,10 +85,35 @@ function compareVersion(v1, v2) {
   return 0
 }
 
+function dateFormat(fmt, date) {
+  let ret;
+  const opt = {
+      "Y+": date.getFullYear().toString(),        // 年
+      "y+": date.getFullYear().toString(),        // 年
+      "m+": (date.getMonth() + 1).toString(),     // 月
+      "D+": date.getDate().toString(),            // 日
+      "d+": date.getDate().toString(),            // 日
+      "H+": date.getHours().toString(),           // 时 24小时制
+      "h+": (date.getHours()>12?date.getHours()-1:date.getHours()).toString(),           // 时 12小时制
+      "M+": date.getMinutes().toString(),         // 分
+      "S+": date.getSeconds().toString(),         // 秒
+      "s+": date.getSeconds().toString()          // 秒
+      // 有其他格式化字符需求可以继续添加，必须转化成字符串
+  };
+  for (let k in opt) {
+      ret = new RegExp("(" + k + ")").exec(fmt);
+      if (ret) {
+          fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+      };
+  };
+  return fmt;
+}
+
 module.exports = {
   formatTime,
   formatLocation,
   fib,
   formatDateTime,
-  compareVersion
+  compareVersion,
+  dateFormat
 }

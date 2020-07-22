@@ -15,6 +15,7 @@ Page({
       industry: "",
       comment: "",
       date: "",
+      voice_list: [],
     },
     
     isCard: true,
@@ -246,5 +247,13 @@ onReplyBlur: function (e) {
         })
       }
     })
-  }
+  },
+  playVoice(e) {
+    const path = e.currentTarget.dataset.path;
+    const time = e.currentTarget.dataset.time;
+    const recordtime = e.currentTarget.dataset.recordtime;
+    wx.navigateTo({
+      url: '../form/playVoice/playVoice?path='+path+'&recordtime='+recordtime,
+    })
+  },
 })
