@@ -198,7 +198,7 @@ Page({
             // 返回文件 ID
             console.log(index,res.fileID)
             resolve({
-              filesFileID: res.fileID,
+              fileFileID: res.fileID,
               fileName: item.name
             })
           },
@@ -222,7 +222,7 @@ Page({
             // 返回文件 ID
             console.log(index,res.fileID)
             resolve({
-              imagesFileID: res.fileID
+              imageFileID: res.fileID
             })
           },
           fail: console.error

@@ -1,0 +1,21 @@
+<!--pages/login/register/register.wxml-->
+<scroll-view class="main" scroll-y="true">
+<i-panel title="注册信息">
+      <i-input value="{{ form.nickname }}" title="昵称" autofocus placeholder="请输入昵称"  maxlength="100" bind:change="nicknameChange" />
+      <i-input value="{{ form.password }}" type="password" title="密码" placeholder="请输入密码"  maxlength="100" bind:change="passwordChange"/>
+      <i-input value="{{ form.confirmPassword }}" title="确认密码" placeholder="请确认密码"  maxlength="100"  bind:change="confirmPasswordChange"/>
+      <i-input value="{{ form.name }}" title="姓名" placeholder="请输入姓名" maxlength="100"
+        bind:change="nameChange"/>
+      <i-input value="{{ form.email }}" title="邮箱" placeholder="请输入邮箱" maxlength="100"
+        bind:change="emailChange"/>
+      <i-input value="{{ form.company }}" title="单位" placeholder="请输入单位" maxlength="100"
+        bind:change="companyChange"/>
+      <i-input value="{{ form.job }}" title="职务" placeholder="请输入职务" maxlength="100"
+      bind:change="jobChange"/>
+      <i-input value="{{ form.tel }}" type="number" title="联系电话" placeholder="请输入联系电话" maxlength="20"
+      bind:change="telChange"/>
+  </i-panel>
+  <view class="padding">
+    <button class="cu-btn block bg-red lg" bindtap="signUp">注册</button>
+  </view>
+</scroll-view>

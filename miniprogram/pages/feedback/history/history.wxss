@@ -1,1 +1,8 @@
 /* pages/feedback/history/history.wxss */
+.cu-list.menu>.cu-item .content>image.images {
+  width: 200rpx;
+  height: 200rpx;
+}
+.comment {
+  margin-bottom: 100rpx;
+}

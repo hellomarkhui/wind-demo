@@ -256,4 +256,21 @@ onReplyBlur: function (e) {
       url: '../form/playVoice/playVoice?path='+path+'&recordtime='+recordtime,
     })
   },
+  openFile(e) {
+    wx.cloud.downloadFile({
+      fileID: e.currentTarget.dataset.fileid, // 文件 ID
+      success: res => {
+        // 返回临时文件路径
+        console.log(res.tempFilePath)
+        const filePath = res.tempFilePath
+        wx.openDocument({
+          filePath: filePath,
+          success: function (res) {
+            console.log('打开文档成功')
+          }
+        })
+      },
+      fail: console.error
+    })
+  },
 })

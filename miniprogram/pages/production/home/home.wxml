@@ -7,7 +7,7 @@
     </view>
   </scroll-view>
   <scroll-view  class="content" wx:if="{{curContent==='proList' && curPackageId===item.id}}" scroll-y="true" 
-    wx:for="{{packages}}" wx:key="id">
+    wx:for="{{packages}}" wx:key="id" enable-flex="true">
     <view class="content-item" wx:if="{{curPackageId===item.proPackageId}}"
     id="content-{{index}}" wx:for="{{list}}" wx:key="id">
       <view class="item-row">

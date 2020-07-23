@@ -2,23 +2,23 @@
 <scroll-view  class="content" scroll-y="true" >
         <view class="cu-bar bg-white margin-top solid-bottom">
           <view class="action">
-            <text class="cuIcon-title text-orange"></text>时间：{{question.date}}
+            时间：{{question.date}}
           </view>
         </view>
         <view class="cu-bar bg-white margin-top solid-bottom">
           <view class="action">
-            <text class="cuIcon-title text-orange"></text>类型：{{question.type}}
+            类型：{{question.type}}
           </view>
         </view>
         <view class="cu-bar bg-white margin-top solid-bottom">
           <view class="action">
-            <text class="cuIcon-title text-orange"></text>风电场名称：{{question.name}}
+            风电场名称：{{question.name}}
           </view>
         </view>
 
         <view class="cu-bar bg-white margin-top solid-bottom">
           <view class="action">
-            <text class="cuIcon-title text-orange"></text>简要描述：
+            简要描述：
           </view>
         </view>
         <view class="cu-card article  no-card">
@@ -30,31 +30,55 @@
           </view>
         </view>
 
-  <view class="cu-form-group">
-    <view class="title">录音列表：</view>
-  </view>
-  <view class="cu-list menu sm-border">
-    <view wx:if="{{question.voice_list.length}}" class="cu-item" wx:for="{{question.voice_list}}" wx:for-item="voice">
-      <view class="content">
-        <text class="text-grey">{{index}}、录音时长：{{voice.recordTime}}s</text>
-      </view>
-      <view class="action">
-        <button class="cu-btn round bg-red" data-path="{{voice.voiceFileID}}" data-recordtime="{{voice.recordTime}}" catchtap="playVoice">播放</button>
+  <block wx:if="{{question.voice_list.length}}">
+    <view class="cu-form-group margin-top">
+      <view class="title">录音列表：</view>
+    </view>
+    <view class="cu-list menu sm-border">
+      <view class="cu-item" wx:for="{{question.voice_list}}" wx:for-item="voice">
+        <view class="content">
+          <text class="text-grey">{{index}}、录音时长：{{voice.recordTime}}s</text>
+        </view>
+        <view class="action">
+          <button class="cu-btn round bg-red" data-path="{{voice.voiceFileID}}" data-recordtime="{{voice.recordTime}}" catchtap="playVoice">播放</button>
+        </view>
       </view>
     </view>
-    <view class="cu-item" wx:if="{{!question.voice_list.length}}">
-      <view class="content">
-        <text class="text-grey">未上传录音</text>
+  </block>
+
+  <block wx:if="{{question.fileList.length}}">
+    <view class="cu-form-group margin-top">
+      <view class="title">文件列表：</view>
+    </view>
+    <view class="cu-list menu sm-border">
+      <view class="cu-item arrow" wx:for="{{question.fileList}}" wx:for-item="file" 
+      catchtap="openFile" data-fileid="{{file.fileFileID}}">
+        <view class="content">
+          <text class="text-grey">{{index}}、{{file.fileName}}</text>
+        </view>
       </view>
     </view>
-  </view>
+  </block>
+
+  <block wx:if="{{question.imageList.length}}">
+    <view class="cu-form-group margin-top">
+      <view class="title">图片列表：</view>
+    </view>
+    <view class="cu-list menu sm-border">
+      <view class="cu-item">
+        <view class="content">
+          <image class="images" src="{{image.imageFileID}}" wx:for="{{question.imageList}}" wx:for-item="image"></image>
+        </view>
+      </view>
+    </view>
+  </block>
 
   <view class="cu-bar bg-white margin-top solid-bottom">
     <view class="action">
       <text class="cuIcon-title text-orange"></text>评论列表：
     </view>
   </view>
-  <view class="cu-list menu menu-avatar comment solids-top">
+  <view class="cu-list menu menu-avatar comment solids-top comment">
     <block wx:if="{{comment_list.length}}" wx:for="{{comment_list}}" wx:for-index="index" wx:for-item="clist" wx:key>
       <view class="cu-item" wx:if="{{clist.reply_id == 0}}">
         <view class="cu-avatar round" style="background-image:url({{clist.comment_user_avatar}});"></view>
@@ -73,7 +97,6 @@
                 </block>
                 <view class='flex-sub'>{{clist2.comment_text}}</view>
               </view>
-             
             </view>
          </block>
           <view class='margin-top-sm flex justify-between'>
@@ -83,7 +106,9 @@
       </view>
     </block>
     <block wx:if="{{!comment_list.length}}">
-      <text>评论列表为空</text>
+      <view class="comment">
+        <text>评论列表为空</text>
+      </view>
     </block>
   </view>
   <view class="cu-bar foot input">
